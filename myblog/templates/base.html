@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head> <title>{% block title %}MyBlog{% endblock %}</title> </head>
+
+<body>
+<style type="text/css">
+  body{
+    background-color: #eee;
+    font-family: helvetica, arial, sans-serif;
+    font-size: medium;
+  }
+  #container {
+    background-color: #fff;
+    padding: 20px;
+    margin: auto;
+    width: 800px;
+    font-size: small; 
+  }
+  
+ 
+</style>
+  <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
+  <div id="container">
+    <div id="menu">
+      {% block nav-global %}
+        <center><h1>MyBlog</h1></center>
+          {% if user.is_staff %}
+            <div align="right">
+            [ {{ user.username }} ] 
+            <a href="{% url 'admin:index' %}">Admin</a>
+            <a href="{% url 'admin:blogapp_post_add' %}">Add post</a>
+            <a href="{% url 'admin:logout' %}">Logout</a>
+            </div>
+          {% endif %}
+      {% endblock %}
+    </div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+</body>
+</html>
