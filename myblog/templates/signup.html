@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head><title>User signup</title></head>
+<body>
+<style type="text/css">
+  #sign_up{
+    position: absolute;
+    border: 1px solid gray;
+    padding: 10px; 
+    top: 200px;
+    left: 500px;
+    max-width: 300px;
+    background-color:#b0e0e6;
+  }
+</style><center>
+<div id="sign_up">
+<form action="/">
+  <label for="uname">Username</label>
+  <input type="text" name="username" id="uname"><br>
+  <label for="pwd1">Password</label>
+  <input type="password" name="password1" id="pwd1"><br>
+  <label for="pwd2">Confirm password</label>
+  <input type="password" name="password2" id="pwd1"><br>
+  <label for="email">E-mail</label>
+  <input type="text" name="email" id="email"><br>
+  <input type="submit" value="Submit">
+</form>
+<script type= "text/javascript">
+  if(document.getElementById("pwd1") != document.getElementByID("pwd1")){
+    document.write("Password does not mach!");
+  }
+</script>
+</div>
+</body>
+</html>
+

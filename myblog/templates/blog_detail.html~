@@ -1,0 +1,3 @@
+{% load comments %}
+{% get_comment_count for blog.post object_pk as comment_count %}
+<p>{{ comment_count }} comments have been posted.</p>

@@ -32,6 +32,6 @@
       {% endif %}
         </span></center>
         </div>
-     {% endif %}
-     </div>
+    {% endif %}
+    </div>
 {% endblock %}

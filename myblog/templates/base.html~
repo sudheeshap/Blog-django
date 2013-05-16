@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head> <title>{% block title %}MyBlog{% endblock %}</title> </head>
+
 <body>
 <style type="text/css">
   body{
@@ -19,8 +20,10 @@
     background-color: #efe;
     padding: 10px;
   }
+  
+ 
 </style>
-<div id="sidebar"> {% block sidebar %} {% endblock %} </div>
+  <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
   <div id="container">
     <div id="menu">
       {% block nav-global %}
@@ -35,9 +38,9 @@
           {% endif %}
       {% endblock %}
     </div>
-<div id="content">
-  {% block content %}{% endblock %}
-</div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
 </div>
 </body>
 </html>
