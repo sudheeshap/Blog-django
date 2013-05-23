@@ -1,20 +1,22 @@
 from django.conf.urls import patterns, include, url
-from blogapp.views import home_page, detail, add_comment
+from blogapp.views import *
+from django.contrib.auth.views import login, logout
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+#from django.contrib import admin
+#admin.autodiscover()
 
 urlpatterns = patterns('',
-    #url(r'^$', home_page),
-    # Uncomment the next line to enable the admin:
-    url(r'^', include(admin.site.urls)),
-    url(r'^posts$', home_page),
+    url(r'^$', home_page),
+    url(r'^account/login$', login),
+    url(r'^account/logout$', logout),
+    url(r'^add_post$', add_post),
+    url(r'^account/signup$', create_user),
+    url(r'^account/check_user$', check_user),
     url(r'^posts/(?P<slug>[-\w]+)/$', detail),
-    url(r"^add_comment/(\d+)/$", add_comment),
-    url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r'^add_comment/(\d+)/$', add_comment),
 
-    #url(r'^signup$', signup),
+    #url(r'^comments/', include('django.contrib.comments.urls')), 
     #url(r'^admin/', include(admin.site.urls)),
     #(r'^(\d+)/$', post),
    

@@ -1,0 +1,17 @@
+{% extends "log_base.html" %}
+
+{% block content %}
+<div id="login">
+<b>Sign in</b><br><br>
+<form action="/account/check_user" method="POST">
+  <label>Username</label>
+  <input type="text" name="username" id="uname"><br>
+  <label>Password</label>
+  <input type="password" name="password" id="pwd"></br>
+  <div id="error">{{ error_msg }}</div>
+  <center><input type="submit" value="Login">
+</form>
+<br>
+<p><center>New user? <b><a href="/account/signup">SignUp</a> </b></center>
+</div>
+{% endblock %}

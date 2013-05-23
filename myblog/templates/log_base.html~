@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head> <title>{% block title %}Blog{% endblock %}</title> </head>
+<body>
+<style type="text/css">
+  
+  #logout{
+    background-color: #ffa;
+    width: 300px;
+    margin: 200px auto;
+    padding: 60px; 
+    box-shadow: 10px 10px 5px #888888;
+  }
+  #login{
+    background-color: #ffa;
+    font-family: helvetica;
+    width: 300px;
+    margin: 200px auto;
+    padding: 60px; 
+    box-shadow: 10px 10px 5px #888888;
+  }
+  #error{
+    color: red;
+  }
+</style>
+{% block content %}{% endblock %}
+</body>
+</html>
+

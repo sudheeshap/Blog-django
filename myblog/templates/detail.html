@@ -2,7 +2,7 @@
 {% load comments %}
 {% block title %} {{ post.title }} {% endblock %}
 {% block content %}
-  <b><a href= "/posts">Home</a></b>
+  <b><a href= "/">Home</a></b>
   <div class="title"><h2> {{ post.title }} </h2></div>
   <div class="time">{{ post.pub_date }}</div>
   <div class="post_body">
@@ -10,12 +10,7 @@
   </div>
  
 
-<!---
-<div class="comment">
-{% render_comment_list for post %}
-</div>
---->
-<b>Comments:</b>
+<b>Comments:</b><br>
 {% if comments %}
   {% for comment in comments %}
     <div class="comment">
@@ -27,37 +22,12 @@
   No comments yet.
 {% endif %} 
 
-<div id="add_cmnt"><b>Post a comment</b></div><br>
-<form action="{% url 'blogapp.views.add_comment' post.id %}" method="POST">{% csrf_token %}
-  Name: <input type="text" name="author"><br>
-  <textarea rows="4" cols="50" name="cm_body" placeholder="Enter your comment here."></textarea><br>
-  <input type="submit" value="Submit" >
-</form>
-
-
-<!--- {% render_comment_form for post %} --->
-<!--- {% get_comment_form for post as form %}
-<table>
-  <form action="{% comment_form_target %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-
-    <tr>
-      <td colspan="2">
-        <input type="submit" name="submit" value="Post">
-        <input type="submit" name="preview" value="Preview">
-      </td>
-    </tr>
+<div id="add_cmnt"><h3>Post a comment</h3></div><br>
+<form action="{% url 'blogapp.views.add_comment' post.id %}" method="POST">
+      {{ form.as_p }}
+      <input type="submit" value="Post comment">
   </form>
-</table>
-<!--- {% render_comment_form for post %} --->
-<!--- 
-{% get_comment_list for blogapp.post object_pk as comment_list %}
-{% for comment in comment_list %}
-<p>Posted by: {{ comment.user_name }} on {{ comment.submit_date }}</p>
-...
-<p>Comment: {{ comment.comment }}</p>
-... --->
-{% endfor %}
+
+
 
 {% endblock %}

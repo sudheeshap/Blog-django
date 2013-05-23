@@ -1,0 +1,8 @@
+{% extends "log_base.html" %}
+
+{% block content %}
+<div id="logout">
+  Logged out..
+  <center><a href="/">Signin</a>
+</div>
+{% endblock %}
