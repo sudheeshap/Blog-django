@@ -13,8 +13,9 @@ urlpatterns = patterns('',
     url(r'^add_post$', add_post),
     url(r'^account/signup$', create_user),
     url(r'^account/check_user$', check_user),
-    url(r'^posts/(?P<slug>[-\w]+)/$', detail),
+    url(r'^(?P<year>[\d]+)/(?P<month>[\w]+)/(?P<slug>[-\w]+)/$', detail),
     url(r'^add_comment/(\d+)/$', add_comment),
+    
 
     #url(r'^comments/', include('django.contrib.comments.urls')), 
     #url(r'^admin/', include(admin.site.urls)),

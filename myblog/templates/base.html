@@ -1,59 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head> <title>{% block title %}MyBlog{% endblock %}</title> </head>
+<head> 
+<title>{% block title %}{{ user.username|capfirst}}'s blog{% endblock %}</title> 
+{% load static %}
+<link rel='stylesheet' type='text/css' href="{% static 'base_style.css' %}">
+</head>
 <body>
-<style type="text/css">
-  body{
-    background-color: #aca;
-    font-family: helvetica, arial, sans-serif;
-    font-size: medium;
-    
-  }
-  #container {
-    background-color: #fff;
-    padding: 20px;
-    margin: auto 200px;
-    width: 800px;
-    height: 100%;
-    box-shadow: 10px 10px 5px #888888;
-    font-size: small; 
-  }
-  #menu{
-    background-color: #ada;
-    padding: 10px;
-  }
-  #navg{
-    padding: 10px 10px;
-  }
-  .comment{
-    background-color: #efe;
-    padding: 10px;
-  }
-  .errorlist{
-    color: #faf;
-  }
-  .helptext{
-    color: #aaa;
-  }
-</style>
-
   <div id="container">
     <div id="menu">
-      {% block nav-global %}
-        <center><h1>MyBlog</h1></center>
-        <div id="navg" align="right">
-          <b>[ {{ user.username }} ] </b>
-          <a href='/add_post'>Add post</a>      
-          <a href="/account/logout">Logout</a>  
-       </div>
-      {% endblock %}
+      <br><center><h1>{{ user.username|capfirst}}'s blog</h1></center>
+      <div class="navg" align="right">
+        <ul><b>[ {{ user.username }} ] </b>
+        {% block header %} {% endblock %}
+        <a href="/account/logout">Logout</a> 
+      </div> 
+    </div>
+    {% block sidebar %} 
+      <div id="sidebar">
+        <ul>
+        {% for yr, months in archive.items %}
+          <li>{{ yr }}</li>
+          {% for mnt, titles in months.items %}
+          <ul>
+            <li>{{ mnt }}  </li>
+            {% for ttl in titles %}
+            <ul>
+              <li><a href="/{{ yr }}/{{ mnt }}/{{ ttl|slugify }}"> {{ ttl }}</a> </li>
+            </ul>
+            {% endfor %} 
+          </ul>
+        {% endfor %} 
+        </ul> 
+        {% endfor %}
+          </div>
+    {% endblock %}
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div align="center" id="footer">{% block footer %}<i>Powered by SAP.</i>{% endblock %}</div>
   </div>
-<div id="content">
-  {% block content %}{% endblock %}
-</div>
-</div>
-<div id="sidebar">
-  {% block sidebar %}{% endblock %}
-</div>
 </body>
 </html>

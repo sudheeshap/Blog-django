@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
-from django.forms import ModelForm
-# Create your models here.
 
 class Post(models.Model):
     title = models.CharField(max_length=80)
@@ -15,7 +13,7 @@ class Post(models.Model):
         return self.title
     
     def get_url(self):
-        return self.slug
+        return self.pub_date.strftime('%Y/%b') + "/" + self.slug
 
 
 class Comment(models.Model):

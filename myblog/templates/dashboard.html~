@@ -1,0 +1,15 @@
+{% extends "log_base.html" %}
+{% block content %}
+  <div class="dash">
+    <div class="header">{{ user|capfirst }}'s blogs</div>
+    
+    <div class="list">{{ blog.title }}
+      <div align="right"><a href="/hi"><input type="button" value="View blog"></a></input></div>
+    </div> 
+    <center>
+    <form action="{% url 'blogapp.views.add_blog' %}" method="post">
+      {{ form.as_p }} 
+      <center><input type="submit" value="New Blog">
+  </form>
+  </div>
+{% endblock %}

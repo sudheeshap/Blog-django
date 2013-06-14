@@ -1,20 +1,14 @@
-{% extends "base.html" %}
-<style>
-#container {
-    
-    width: 500px;
-    height: 400px;
-    box-shadow: 10px 10px 5px #888888;
-     
-  }
-</style>
-{% block title %}Create an account{% endblock %}
-{% block nav-global %} {% endblock %}
-{% block content %}
+{% extends "log_base.html" %}
 
+{% block title %}Create an account{% endblock %}
+{% block header %} {% endblock %}
+{% block sidebar %} {% endblock %}
+{% block content %}
+  <div class="login" id="signup">
   <h1>Create an account</h1>
   <form action="{% url 'blogapp.views.create_user' %}" method="post">
       {{ form.as_p }}
-      <center><input type="submit" value="Create account">
+      <p class="submit"><input type="submit" value="Create account"></p>
   </form>
+  </div>
 {% endblock %}
