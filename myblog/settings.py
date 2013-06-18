@@ -1,16 +1,16 @@
 # Django settings for myblog project.
-import dj_database_url
+
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-ALLOWED_HOSTS = ['localhost']
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
 MANAGERS = ADMINS
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'blogDB',                      # Or path to database file if using sqlite3.
@@ -20,9 +20,7 @@ MANAGERS = ADMINS
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
-}"""
-
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+}
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -111,10 +109,7 @@ ROOT_URLCONF = 'myblog.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'myblog.wsgi.application'
 
-TEMPLATE_DIRS = ('/home/sap/works/myblog/myblog/templates/',
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+TEMPLATE_DIRS = (os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates'),
 )
 
 INSTALLED_APPS = ('blogapp',
@@ -159,3 +154,9 @@ LOGGING = {
         },
     }
 }
+
+
+import os
+import dj_database_url
+if os.getcwd() == "/app":
+  DATABASES['default'] =  dj_database_url.config()

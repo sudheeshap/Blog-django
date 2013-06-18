@@ -1,5 +1,6 @@
 # Django settings for myblog project.
-import dj_database_url
+
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -109,10 +110,7 @@ ROOT_URLCONF = 'myblog.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'myblog.wsgi.application'
 
-TEMPLATE_DIRS = ('/home/sap/works/myblog/myblog/templates/',
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+TEMPLATE_DIRS = (os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates'),
 )
 
 INSTALLED_APPS = ('blogapp',
@@ -157,3 +155,9 @@ LOGGING = {
         },
     }
 }
+
+
+import os
+import dj_database_url
+if os.getcwd() == "/app":
+  DATABASES['default'] =  dj_database_url.config()
