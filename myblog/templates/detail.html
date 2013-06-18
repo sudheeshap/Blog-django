@@ -8,9 +8,9 @@
 {% block content %}
   <div class="title"><h2> {{ post.title }} </h2></div>
   <div class="time">{{ post.pub_date }}</div>
-  <ul><div class="post_body">
+  <div class="post_body">
     {{ post.body|linebreaks }}
-  </div></ul>
+  </div>
   <b>Comments:</b><br>
   {% if comments %}
     {% for comment in comments %}

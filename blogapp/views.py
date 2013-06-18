@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from blogapp.myforms import PostForm, CommentForm
 from blogapp.models import *
+import psycopg2
 import datetime
 
 def home_page(request):

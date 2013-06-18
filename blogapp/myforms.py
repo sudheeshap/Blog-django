@@ -5,7 +5,7 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         exclude = ['user', 'slug',]
-        widgets = {'body': Textarea(attrs={'cols': 80, 'rows': 20}), }
+        widgets = {'body': Textarea(attrs={'cols': 80, 'rows': 15}), }
 
 class CommentForm(ModelForm):
     class Meta:

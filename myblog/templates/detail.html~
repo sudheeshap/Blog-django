@@ -16,8 +16,8 @@
     {% for comment in comments %}
       <div class="comment">
       <div class="time">{{ comment.created }} | {{ comment.author }}</div>
-      <div class="body">{{ comment.body|linebreaks }}</div>>
-      </div>
+      <div class="body">{{ comment.body|linebreaks }}</div>
+      </div><br>
     {% endfor %} 
   {% else %}
     No comments yet.
